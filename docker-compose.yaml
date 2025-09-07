@@ -1,0 +1,33 @@
+services:
+  api:
+    build: .
+    container_name
+
+fastapi-streaming
+    ports:
+      - "8000-8000"
+    volumes:
+      - :/app:/app
+    environment:
+      -PYTHONPAYH=/app
+      - MONGODB_URI=mongodb://mongo27017
+      - MONGODB_DB=streaming
+    
+    depends_on:
+      - mongo
+    comand uvicorn app.main:app
+
+-- host 0.0.0.0 
+-- port 8000
+-- reload
+
+  mongo: 
+    image: mongo:6
+    container_name: mongo-db
+    ports: 
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  volumes:
+    mongo_data
