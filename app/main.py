@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import health, movies
+from routers import health, movies
 
 app = FastAPI(title="StreamingAPI", version="0.1.0")
 

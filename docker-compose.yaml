@@ -1,33 +1,28 @@
+version: "3.9"
+
 services:
   api:
     build: .
-    container_name
-
-fastapi-streaming
+    container_name: fastapi-streaming
     ports:
-      - "8000-8000"
+      - "8000:8000"
     volumes:
-      - :/app:/app
+      - ./app:/app
     environment:
-      -PYTHONPAYH=/app
-      - MONGODB_URI=mongodb://mongo27017
+      - PYTHONPATH=/app
+      - MONGODB_URI=mongodb://mongo:27017
       - MONGODB_DB=streaming
-    
     depends_on:
       - mongo
-    comand uvicorn app.main:app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
--- host 0.0.0.0 
--- port 8000
--- reload
-
-  mongo: 
+  mongo:
     image: mongo:6
     container_name: mongo-db
-    ports: 
+    ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
 
-  volumes:
-    mongo_data
+volumes:
+  mongo_data:
